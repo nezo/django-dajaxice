@@ -58,7 +58,7 @@ class DajaxiceRequest(View):
                 res = HttpResponse(response, content_type="application/x-json")
             else:
                 res = HttpResponse(response, mimetype="application/x-json")
-            if response != dajaxice_config.DAJAXICE_EXCEPTION:
+            if response != dajaxice_config.DAJAXICE_EXCEPTION and hasattr(res, 'cookies'):
                 res.cookies = response.cookies
             return res
         else:
